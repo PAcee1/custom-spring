@@ -15,14 +15,14 @@ public class ConnectionUtils {
     // 使用ThreadLoacl保存连接
     private ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
 
-    private static ConnectionUtils connectionUtils = new ConnectionUtils();
+    /*private static ConnectionUtils connectionUtils = new ConnectionUtils();
 
     private ConnectionUtils(){}
 
     // 单例模式，提供获取方法
     public static ConnectionUtils getInstance(){
         return connectionUtils;
-    }
+    }*/
 
     /**
      * 获取连接

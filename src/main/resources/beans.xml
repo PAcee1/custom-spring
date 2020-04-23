@@ -3,9 +3,25 @@
 <beans>
     <!--id标识对象，class是类的全限定类名-->
     <bean id="accountDao" class="com.enbuys.dao.impl.JdbcAccountDaoImpl">
+        <property name="ConnectionUtils" ref="connectionUtils"></property>
     </bean>
     <bean id="transferService" class="com.enbuys.service.impl.TransferServiceImpl">
         <!--set+ name 之后锁定到传值的set方法了，通过反射技术可以调用该方法传入对应的值-->
         <property name="AccountDao" ref="accountDao"></property>
+    </bean>
+
+    <bean id="connectionUtils" class="com.enbuys.utils.ConnectionUtils">
+        <!--set+ name 之后锁定到传值的set方法了，通过反射技术可以调用该方法传入对应的值-->
+        <property name="AccountDao" ref="accountDao"></property>
+    </bean>
+
+    <bean id="transactionManager" class="com.enbuys.utils.TransactionManager">
+        <!--set+ name 之后锁定到传值的set方法了，通过反射技术可以调用该方法传入对应的值-->
+        <property name="ConnectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <bean id="proxyFactory" class="com.enbuys.factory.ProxyFactory">
+        <!--set+ name 之后锁定到传值的set方法了，通过反射技术可以调用该方法传入对应的值-->
+        <property name="TransactionManager" ref="transactionManager"></property>
     </bean>
 </beans>

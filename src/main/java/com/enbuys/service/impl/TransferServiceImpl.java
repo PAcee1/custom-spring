@@ -23,9 +23,9 @@ public class TransferServiceImpl implements TransferService {
 
     @Override
     public void transfer(String fromCardNo, String toCardNo, int money) throws Exception {
-        try {
+       /* try {
             // 开启事物
-            TransactionManager.getInstance().begin();
+            TransactionManager.getInstance().begin();*/
             Account from = accountDao.queryAccountByCardNo(fromCardNo);
             Account to = accountDao.queryAccountByCardNo(toCardNo);
 
@@ -39,7 +39,7 @@ public class TransferServiceImpl implements TransferService {
 
             accountDao.updateAccountByCardNo(from);
 
-            // 提交事务
+            /*// 提交事务
             TransactionManager.getInstance().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,6 +47,6 @@ public class TransferServiceImpl implements TransferService {
             TransactionManager.getInstance().rollback();
 
             throw e; // 将异常抛出，告诉上层
-        }
+        }*/
     }
 }
